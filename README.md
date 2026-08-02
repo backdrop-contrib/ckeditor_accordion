@@ -4,8 +4,11 @@ Provides a CKEditor plugin that allows users to create & display content in an a
 
 ## Installation
 
-- Install this module using the official [Backdrop CMS instructions](https://backdropcms.org/guide/modules)
-- Enable the plugin for the text formats of your choice
+- Install this module using the official [Backdrop CMS instructions](https://backdropcms.org/guide/modules).
+- Open Administration > Configuration > Content authoring > Text formats and editors (admin/config/content/formats).
+- Edit a text format's settings (usually Basic HTML).
+- Drag n Drop the Add Accordion -button to the toolbar to show it to the users.
+- Change any settings at Administration > Configuration > Content authoring > Administer CKEditor Accordion.
 
 ## Issues
 
