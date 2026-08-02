@@ -99,11 +99,34 @@ function ckeditor_accordion_config_info() {
 function ckeditor_accordion_admin() {
   $form = array();
   $form['#config'] = 'ckeditor_accordion.settings';
+  $config = config('ckeditor_accordion.settings');
 
   $form['ckeditor_accordion_collapsed'] = array(
     '#type' => 'checkbox',
     '#title' => t('Collapse all tabs by default'),
-    '#default_value' => config_get('ckeditor_accordion.settings', 'ckeditor_accordion_collapsed'),
+    '#default_value' => $config->get('ckeditor_accordion_collapsed') ?: 0,
+  );
+  $form['ckeditor_accordion_keep_rows_open'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Keep accordion rows open when opening another one'),
+    '#default_value' => $config->get('ckeditor_accordion_keep_rows_open') ?: 0,
+  );
+  $form['ckeditor_accordion_animate'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Animate accordion open / close'),
+    '#default_value' => $config->get('ckeditor_accordion_animate') ?? 1,
+  );
+  $form['ckeditor_accordion_open_hash'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Open tabs with hash using anchor links or on page load'),
+    '#default_value' => $config->get('ckeditor_accordion_open_hash') ?? 0,
+    '#description' => t('With this, your accordion row titles are hashed and used as links to the row. For example, if your accordion title is "Frequently Asked Questions", you can link to it using href="#FrequentlyAskedQuestions".'),
+  );
+  $form['ckeditor_accordion_allow_html_titles'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Allow HTML in row titles'),
+    '#default_value' => $config->get('ckeditor_accordion_allow_html_titles') ?? 0,
+    '#description' => t('This is useful if you want to use icons or other HTML elements in your accordion titles.'),
   );
 
   return system_settings_form($form);
@@ -113,8 +136,13 @@ function ckeditor_accordion_admin() {
  * Implements hook_preprocess_HOOK().
  */
 function ckeditor_accordion_preprocess_page(&$variables) {
-  $config = config_get('ckeditor_accordion.settings', 'ckeditor_accordion_collapsed');
-  if ($config) {
-    backdrop_add_js(array('ckeditor_accordion' => array('collapseAll' => 1)), array('type' => 'setting'));
-  }
+  $config = config('ckeditor_accordion.settings');
+  $settings = array(
+    'collapseAll' => (int) $config->get('ckeditor_accordion_collapsed'),
+    'keepRowsOpen' => (int) $config->get('ckeditor_accordion_keep_rows_open'),
+    'animateAccordionOpenAndClose' => (int) $config->get('ckeditor_accordion_animate'),
+    'openTabsWithHash' => (int) $config->get('ckeditor_accordion_open_hash'),
+    'allowHtmlInTitles' => (int) $config->get('ckeditor_accordion_allow_html_titles'),
+  );
+  backdrop_add_js(array('ckeditor_accordion' => $settings), array('type' => 'setting'));
 }

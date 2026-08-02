@@ -1,4 +1,8 @@
 {
     "_config_name": "ckeditor_accordion.settings",
-    "ckeditor_accordion_collapsed": false
+    "ckeditor_accordion_collapsed": false,
+    "ckeditor_accordion_keep_rows_open": false,
+    "ckeditor_accordion_animate": true,
+    "ckeditor_accordion_open_hash": false,
+    "ckeditor_accordion_allow_html_titles": false
 }
