@@ -15,16 +15,30 @@ function ckeditor_accordion_ckeditor5_plugins() {
   $module_path = backdrop_get_path('module', 'ckeditor_accordion');
   $plugins['accordion.Accordion'] = array(
     'library' => array('ckeditor_accordion', 'ckeditor_accordion.plugin'),
+    'plugin_dependencies' => array(
+      'widget.Widget',
+      'widget.WidgetToolbarRepository',
+    ),
     'buttons' => array(
       'accordion' => array(
         'label' => t('Accordion'),
-        'image' => $module_path. '/plugins/accordion/icons/accordion.svg',
+        'image' => $module_path . '/plugins/accordion/icons/accordion.svg',
         'required_html' => array(
           '<dl class="ckeditor-accordion">',
           '<dd>',
           '<dt>',
           '<p>',
         ),
+      ),
+    ),
+    'config' => array(
+      'accordion' => array(
+        'contentToolbar' => array(
+          'accordionAddAbove',
+          'accordionRemove',
+          'accordionAddBelow',
+        ),
+        'tableToolbar' => array('accordion'),
       ),
     ),
   );
@@ -38,7 +52,7 @@ function ckeditor_accordion_ckeditor5_plugins() {
 function ckeditor_accordion_library_info() {
   $module_path = backdrop_get_path('module', 'ckeditor_accordion');
   $libraries['ckeditor_accordion.plugin'] = array(
-    'title' => 'CKEditor plugin to convert basic HTML tags to preferred tags.',
+    'title' => 'CKEditor plugin to create and manage accordions.',
     'version' => '2.0',
     'css' => array(
       $module_path . '/plugins/accordion/accordion.css' => array(),
@@ -48,15 +62,6 @@ function ckeditor_accordion_library_info() {
     ),
   );
   return $libraries;
-}
-
-/**
- * Implements hook_ckeditor5_config_alter().
- */
-function ckeditor_accordion_ckeditor5_config_alter(array &$settings, $format) {
-  // dsm($settings);
-  // $settings['toolbar']['shouldNotGroupWhenFull'] = FALSE;
-  // unset($settings['toolbar']['shouldNotGroupWhenFull']);
 }
 
 /**

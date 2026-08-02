@@ -1,21 +1,58 @@
-/* Small CSS to differentiate tabs durng edition */
-dl.ckeditor-accordion {
+/* Admin styles for CKEditor 5 accordion editing */
+
+/* Helper styles */
+.ck-editor__editable .ckeditor-accordion {
   border: dashed 2px #d81b60;
-  padding: 40px 20px 0;
+  padding: 40px 10px 20px;
   position: relative;
 }
-dl.ckeditor-accordion dt {
-  border: dashed 1px #1e88e5;
-  display: inline-block;
+
+.ck-editor__editable .ckeditor-accordion .ckeditor-accordion-title {
+  border: dashed 1px #1e88e5 !important;
+  display: block;
   padding: 5px 10px;
+  margin: 45px 0 10px;
+  position: relative;
 }
-dl.ckeditor-accordion dd {
-  border: dashed 1px #43a047;
-  margin: 5px 0 20px 20px;
-  padding: 0 10px;
+.ck-editor__editable .ckeditor-accordion .ckeditor-accordion-title:first-of-type {
+  margin-top: 20px;
+}
+.ck-editor__editable .ckeditor-accordion .ckeditor-accordion-title:before {
+  content: 'Row title';
+  position: absolute;
+  left: 0;
+  top: -22px;
+  display: inline-block;
+  padding: 5px;
+  color: #fff;
+  background: #1e88e5;
+  line-height: 1;
+  font-size: 12px;
+  left: -1px;
 }
 
-dl.ckeditor-accordion:before {
+.ck-editor__editable .ckeditor-accordion .ckeditor-accordion-content {
+  border: dashed 1px #43a047 !important;
+  display: block;
+  padding: 5px 10px;
+  margin: 25px 0 10px;
+  position: relative;
+}
+.ck-editor__editable .ckeditor-accordion .ckeditor-accordion-content:before {
+  content: 'Row content';
+  position: absolute;
+  left: 0;
+  top: -22px;
+  display: inline-block;
+  padding: 5px;
+  color: #fff;
+  background: #43a047;
+  line-height: 1;
+  font-size: 12px;
+  left: -1px;
+}
+
+.ck-editor__editable .ckeditor-accordion:before {
   content: 'Accordion';
   position: absolute;
   left: 0;
