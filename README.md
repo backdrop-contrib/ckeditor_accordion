@@ -13,8 +13,8 @@ Bugs and Feature requests should be reported in the [Issue Queue](https://github
 
 ## Current Maintainers
 
-- [Indigoxela](https://github.com/indigoxela)
-- Seeking new maintainer
+- [Herb v/d Dool](https://github.com/herbdool)
+- Co-maintainers welcome
 
 ## Credits
 
