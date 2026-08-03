@@ -28,8 +28,8 @@ editor, and you're open for alternatives, take a look at this
 
 ## Current Maintainers
 
-- [Indigoxela](https://github.com/indigoxela)
-- Seeking new maintainer
+- [Herb v/d Dool](https://github.com/herbdool)
+- Co-maintainers welcome
 
 ## Credits
 
