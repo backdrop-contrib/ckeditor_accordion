@@ -1,0 +1,10 @@
+<?php
+
+/**
+ * Implements hook_enable().
+ */
+function ckeditor_accordion_enable() {
+  if (!module_exists('ckeditor') && !module_exists('ckeditor5')) {
+    backdrop_set_message(t('The CKEditor Accordion module requires CKEditor 5 or 4 to be installed. CKEditor 5 is preferred since CKEditor 4 reached end of life in 2023. Both are included in Backdrop CMS.'));
+  }
+}
