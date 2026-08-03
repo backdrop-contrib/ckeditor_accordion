@@ -1,6 +1,9 @@
 name = CKEditor accordion
 description = Adds a CKEditor accordion plugin
-package = user-interface
+package = User Interface
+tags[] = Filters
+tags[] = Formats
+tags[] = Text Editors
 backdrop = 1.x
 type = module
 
