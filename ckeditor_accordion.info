@@ -4,8 +4,6 @@ package = user-interface
 backdrop = 1.x
 type = module
 
-dependencies[] = ckeditor5
-
 stylesheets[all][] = css/ckeditor-accordion.css
 scripts[] = js/ckeditor-accordion.js
 configure = admin/config/content/ckeditor_accordion

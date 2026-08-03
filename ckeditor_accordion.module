@@ -2,8 +2,36 @@
 
 /**
  * @file
- * Adds accordion plugin to CKEditor 5.
+ * Adds accordion plugin to CKEditor.
+ * Works with CKEditor 4 and 5.
  */
+
+/**
+ * Implements hook_ckeditor_plugins().
+ *
+ * Register the CKEditor plugin - it appears in the plugins list of content
+ * format settings.
+ */
+function ckeditor_accordion_ckeditor_plugins() {
+  $plugin_path = backdrop_get_path('module', 'ckeditor_accordion') . '/plugins/accordion/';
+  return array(
+    'accordion' => array(
+      'path' => $plugin_path,
+      'file' => 'plugin.js',
+      'css' => array($plugin_path . '/accordion.css'),
+      'buttons' => array(
+        'Accordion' => array(
+          'label' => t('Accordion'),
+          'image' => $plugin_path . '/icons/accordion.png',
+          'dependencies' => array('contextmenu'),
+        ),
+      ),
+      'required_html' => array(
+        array('dl', 'dd', 'dt'),
+      ),
+    ),
+  );
+}
 
 /**
  * Implements hook_ckeditor5_plugins().
